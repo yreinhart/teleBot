@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""Telegram bot tutorial: https://djangostars.com/blog/how-to-create-and-deploy-a-telegram-bot/
-              in Russian: https://tproger.ru/translations/telegram-bot-create-and-deploy/"""
-
+import os
 import requests  
 import datetime
 
@@ -36,13 +34,13 @@ class BotHandler:
 
         return last_update
 
-## TOKEN - INSERT YOUR TOKEN HERE
-token = 'BOT_TOKEN'
+token = os.environ.get('BOT_TOKEN')
 greet_bot = BotHandler(token)  
 greetings = ('здравствуй', 'привет', 'ку', 'здорово')  
 now = datetime.datetime.now()
 
-def main():  
+def main():
+
     new_offset = None
     today = now.day
     hour = now.hour
